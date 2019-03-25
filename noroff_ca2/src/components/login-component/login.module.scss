@@ -1,0 +1,26 @@
+
+.form{
+    margin: 100px auto;
+    padding: 35px 0;
+    text-align: center;
+    min-width: 100px;
+    max-width: 350px;
+    border: 1px solid black;
+    background-image: url('../../assets/login-bg.jpg');
+    .form_title{
+        padding: 5px 0 35px;
+        font-size: 30px;
+    }
+    .form_element{
+        display: block;
+        text-align: center;
+        padding: 5px 10px;
+        margin: 15px auto;
+        width: 80%;
+    }
+    .form_button{
+        margin: 5px;
+        padding: 5px 10px;
+        width: 90px;
+    }
+}
