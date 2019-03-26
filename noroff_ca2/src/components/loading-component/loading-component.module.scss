@@ -1,0 +1,17 @@
+.loading {
+    width: 60px;
+    height: 60px;
+    margin: 100px auto 35px;
+    border: 15px solid  #61dbfb;
+    border-top: 15px solid lightgray; 
+    border-radius: 50px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

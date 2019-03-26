@@ -5,13 +5,14 @@ import './index.scss'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import LoginPage from './pages/LoginPage/LoginPage'
-import HomePage from './pages/HomePage/HomePage';
+import CardsPage from './pages/Cards-page/CardsPage';
+
 
 ReactDOM.render(
     <BrowserRouter>
         <App>
-            <Route exact path="/" component={ HomePage }/>
-            <Route path="/login" component={LoginPage} />
+            <Route exact path="/" component={ CardsPage } />
+            <Route path="/login" component={ LoginPage } />
         </App>
     </BrowserRouter>,
     document.getElementById('root')
