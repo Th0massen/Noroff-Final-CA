@@ -1,0 +1,21 @@
+.search{
+    display: block;
+    margin: 35px auto;
+    text-align: center;
+    .search_field{
+        width: 45%;
+        max-width: 350px;
+        text-align: center;
+        height: 27px;
+        padding: 0;
+    }
+    .search_button{
+        height: 100%;
+        width: 60px;
+        padding: 2px 0 5px;
+        font-size: 15px;
+        &:hover{
+            background-color: lightgrey;
+        }
+    }
+}

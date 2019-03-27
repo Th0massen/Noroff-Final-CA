@@ -2,3 +2,30 @@
     width: 250px;
     margin: 25px auto;
 }
+
+.card_details{
+    margin: 0 auto;
+    .details_container{
+        display: grid;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        width: 40%;
+        max-width: 550px;
+        min-width: 250px;
+        @media (max-width: 1000px){
+            grid-template-columns: 1fr;
+        }
+        .details_text{
+            border: 1px solid black;
+            padding: 15px;
+            margin: 0 25px 25px;
+            box-shadow: 0px 5px 10px rgb(66, 66, 66);
+        }
+        .details_info{
+            border: 1px solid black;
+            box-shadow: 0px 5px 10px rgb(66, 66, 66);
+            margin: 0 25px 25px;
+        }
+    }
+}
+

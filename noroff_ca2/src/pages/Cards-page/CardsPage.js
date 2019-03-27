@@ -5,13 +5,15 @@ import HeaderComponent from '../../components/header-component/header-component'
 import CardComponent from '../../components/card-component/card-component';
 import LoadingComponent from '../../components/loading-component/loading-component'
 import styles from './cardspage.module.scss'
+import SearchBar from '../../components/search-component/search-component';
 
 class HomePage extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             isLoggedIn: true,
-            listOfCards: []
+            listOfCards: [],
+            searchCards: []
         }
     }
 
@@ -37,9 +39,23 @@ class HomePage extends React.Component{
                     filteredRedult.push(result.cards[i])
                 }
                 this.setState({
-                    listOfCards: filteredRedult
+                    listOfCards: filteredRedult,
+                    searchCards: [...filteredRedult]
                 })
             }
+        })
+    }
+
+    handleSearch = ( value ) => {
+        this.filterSearchResults( value )
+    }
+
+    filterSearchResults = ( value ) => {
+        const cards = this.state.searchCards.filter( card => {
+            return card.name.toLowerCase().includes(value.trim().toLowerCase())
+        })
+        this.setState({
+            listOfCards: cards
         })
     }
 
@@ -53,8 +69,10 @@ class HomePage extends React.Component{
             cards = this.state.listOfCards.map( card => (  
                 <CardComponent
                     key = { card.id }
+                    id = { card.id }
                     name = { card.name }
                     imageUrl = { card.imageUrl }
+                    showButtons = { true }
                 />
             ))
         } else{
@@ -65,6 +83,7 @@ class HomePage extends React.Component{
             <React.Fragment>
                 <MenuComponent />
                 <HeaderComponent />
+                <SearchBar onSearch={ this.handleSearch }/>
                 <div className={styles.container}>
                     { cards }
                 </div>
