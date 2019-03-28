@@ -12,8 +12,8 @@ const SearchBar = (props) => {
 
     return(
         <div className={ styles.search }>
-            <input className={ styles.search_field } type="text" placeholder="Search for a card" ref={ input } onChange={ handleSearch }/>
-            <input className={ styles.search_button } type="button" value="&#128269;" onClick={ handleSearch } />
+            <input className={ styles.search_field } type="text" placeholder="Looking for a specific card?" ref={ input } onChange={ handleSearch }/>
+           
         </div>
     )
 }

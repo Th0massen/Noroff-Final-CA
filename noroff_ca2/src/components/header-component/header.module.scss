@@ -1,5 +1,12 @@
 .header{
     width: 100%;
-    height: 150px;
-    background-color: grey;
+    height: 200px;
+    margin: 0 auto;
+    background-color: rgb(56, 56, 56);
+    img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 80%;
+    }
 }
