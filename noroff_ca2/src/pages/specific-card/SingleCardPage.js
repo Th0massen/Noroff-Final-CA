@@ -40,7 +40,7 @@ class SingleCardPage extends React.Component{
                     showDetails = { true }
                     name = { state.name }
                     imageUrl= { state.imageUrl }
-                    text = { state.text }
+                    text = { state.originalText }
                     flavor = { state.flavor }
                     type = { state.type }
                     rarity = { state.rarity }

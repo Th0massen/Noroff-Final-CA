@@ -15,3 +15,28 @@ code {
     monospace;
 }
 
+// Global css rules targeting the about section, to let react change the class name
+.about_info_collapsed{
+  opacity: 0;
+}
+
+.display_about_info{
+  animation-name: displayInfo;
+  animation-duration: 1s;
+}
+
+.collapse_about_info{
+  opacity: 0;
+  animation-name: collapseInfo;
+  animation-duration: 1s;
+}
+
+@keyframes collapseInfo {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
+@keyframes displayInfo {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

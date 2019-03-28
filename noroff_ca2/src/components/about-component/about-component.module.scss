@@ -1,0 +1,30 @@
+.about{
+    &_brand{
+        padding: 5px 10%;
+    }
+    &_button{
+        margin: 75px auto;
+        width: 500px;
+        height: 80px;
+        border: 1px solid black;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: rgb(56, 56, 56);
+        &_arrow{
+            font-size: 1.5rem;
+            text-align: right;
+            padding: 0 25px 0 0;
+            color: rgb(255, 136, 0)
+        }
+        &_text{
+            padding-left: 15px;
+            font-size: 1.5rem;
+            font-family: 'Courgette';
+            color: white;
+        }
+        @media (max-width: 550px){
+            width: 300px;
+        }
+    }
+}
+

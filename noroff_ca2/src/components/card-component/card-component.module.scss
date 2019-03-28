@@ -1,29 +1,53 @@
 .card{
-    width: 250px;
-    margin: 25px auto;
+    width: 260px;
+    margin: 45px auto;
+    .card_title{
+        font-family: 'Courgette', cursive;
+        font-size: 25px;
+        height: 110px;
+    }
+    .card_link{
+        text-align: center;
+        display: block;
+        border: 2px solid rgb(0, 0, 0);
+        color: white;
+        margin-top: 10px;
+        padding: 5px 15px;
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        font-family: 'Courgette', cursive;
+        width: 220px;
+        height: 40px;
+        &:hover{
+            background-color: rgb(204, 204, 204);
+            border: 2px solid rgb(255, 136, 0);
+        }
+    }
 }
 
 .card_details{
     margin: 0 auto;
+    padding: 25px 0;
+    background-image: url('../../assets/cards-bg.jpg');
+    color: white;
+    font-size: 18px;
+    .description{
+        display: inline-block;
+        width: 100px;
+    }
     .details_container{
-        display: grid;
+        text-align: left;
         margin: 0 auto;
-        grid-template-columns: 1fr 1fr;
-        width: 40%;
+        width: 450px;
         max-width: 550px;
         min-width: 250px;
-        @media (max-width: 1000px){
-            grid-template-columns: 1fr;
-        }
         .details_text{
-            border: 1px solid black;
-            padding: 15px;
+            padding: 25px 0;
             margin: 0 25px 25px;
-            box-shadow: 0px 5px 10px rgb(66, 66, 66);
+            word-spacing: 1px;
         }
         .details_info{
-            border: 1px solid black;
-            box-shadow: 0px 5px 10px rgb(66, 66, 66);
             margin: 0 25px 25px;
         }
     }
