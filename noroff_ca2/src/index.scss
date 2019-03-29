@@ -23,20 +23,23 @@ code {
 .display_about_info{
   animation-name: displayInfo;
   animation-duration: 1s;
+  padding: 5px 10%;
 }
 
 .collapse_about_info{
+  display: none;
   opacity: 0;
+  padding: 5px 10%;
   animation-name: collapseInfo;
   animation-duration: 1s;
 }
 
 @keyframes collapseInfo {
-  from { opacity: 1 }
-  to { opacity: 0 }
+  from { opacity: 1; display: block }
+  to { opacity: 0; display: none; }
 }
 
 @keyframes displayInfo {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; display: none }
+  to { opacity: 1; display: block}
 }
