@@ -12,10 +12,10 @@ Installs all required node modules for the project to run as intended
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-# `sign in`
+### `sign in`
 a user is required to access the application, you can add one by clicking on the register button.
 
-# `Happy Hacking`
+### `Happy Hacking`
 
 
 
