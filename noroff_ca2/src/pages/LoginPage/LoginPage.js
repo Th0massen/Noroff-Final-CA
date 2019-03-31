@@ -48,14 +48,16 @@ class LoginPage extends React.Component{
         window.localStorage.setItem('user', this.state.username )
         window.localStorage.setItem('pass', this.state.password)
         this.setState({
-            register: false
+            register: false,
+            showErr: false
         })
     }
 
     // if a user clicks on the 'cancel' button
     handleFormChange = () => {
         this.setState({
-            register: !this.state.register
+            register: !this.state.register,
+            showErr: false
         })
     }
 
