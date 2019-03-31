@@ -8,60 +8,90 @@ class ContactPage extends React.Component{
         super(props)
         this.state = {
             name: '',
-            phone: '',
-            email: '',
-            showNameErr: null,
-            showNumbErr: true,
-            showEmailErr: true,
-            success: false
+            number: '',
+            mail: '',
+            nameValidate: null,
+            phoneValidate: null,
+            mailValidate: null,
+            sendForm: false,
         }
     }
 
-    onNameInput = (e) => {
-        this.setState({
-            name: e.target.value
-        })
-    }
-
-    onPhoneInput = (e) => {
-        this.setState({
-            phone: e.target.value
-        })
-    }
-
-    onEmailInput = (e) => {
-        this.setState({
-            email: e.target.value
-        })
-    }
-
-    onSubmit = () => {
-        if( this.state.showNameErr === true && this.state.showNumbErr === true && this.state.showEmailErr === true ){
+    onNameInput = (event) => {
+        let e = event.target.value
+        if( e === "" ){
             this.setState({
-                success: true
-            })
-        }
-        const phoneRegex = new RegExp(/([0-9]{3})+[. -]([0-9]{3})+[. -]([0-9]{4})/)
-        const mailRegex = new RegExp(/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/)
-        const phoneTest = phoneRegex.test(this.state.phone)
-        const emailTest = mailRegex.test(this.state.email)
-        console.log(phoneTest, emailTest)
-        if( this.state.name === '' || null ){
-            this.setState({
-                showNameErr: false
+                nameValidate: false
             })
         } else{
             this.setState({
-                showNameErr: true
+                name: e,
+                nameValidate: true
             })
         }
-        this.setState({
-            showNumbErr: phoneTest,
-            showEmailErr: emailTest
-        })
-        if( this.state.showNameErr === true && this.state.showNumbErr === true && this.state.showEmailErr === true ){
+    }
+
+    onNumberInput = event => {
+        let e = event.target.value
+        const phoneRegex = new RegExp(/([0-9]{3})+[. -]([0-9]{3})+[. -]([0-9]{4})/)
+        if( phoneRegex.test(e) ){
             this.setState({
-                success: true
+                number: e,
+                phoneValidate: true
+            })
+            console.log(this.state.phoneValidate)
+        } else {
+            this.setState({
+                number: '',
+                phoneValidate: false
+            })
+        }
+    }
+
+    onMailInput = event => {
+        let e = event.target.value
+        const mailRegex = new RegExp(/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/)
+        if( mailRegex.test(e) ){
+            this.setState({
+                mail: e,
+                mailValidate: true
+            })
+        } else{
+            this.setState({
+                mail: '',
+                mailValidate: false
+            })
+        }
+    }
+
+    onSubmit = () => {
+        console.log( this.state.nameValidate, this.state.phoneValidate, this.state.mailValidate )
+        if( ( this.state.nameValidate ) && ( this.state.phoneValidate ) && ( this.state.mailValidate ) ){
+            this.setState({
+                sendForm: true
+            })
+            return this.state.sendForm
+        } 
+        else if( (this.state.nameValidate === null) || (this.state.nameValidate === false) ){
+            this.setState({
+                nameValidate: false
+            })
+        }
+        else if( (this.state.phoneValidate === null) || (this.state.phoneValidate === false) ){
+            this.setState({
+                phoneValidate: false
+            })
+        }
+        else if( (this.state.mailValidate === null) || (this.state.mailValidate === false) ){
+            this.setState({
+                mailValidate: false
+            })
+        }
+        else {
+            this.setState({
+                nameValidate: false,
+                phoneValidate: false,
+                mailValidate: false
             })
         }
     }
@@ -72,14 +102,14 @@ class ContactPage extends React.Component{
                 <MenuComponent/>
                 <HeaderComponent/>
                 <ContactForm
-                    nameError = { this.state.showNameErr }
-                    numbError = { this.state.showNumbErr }
-                    mailError = { this.state.showEmailErr }
-                    checkName = { this.onNameInput }
-                    checkPhone = { this.onPhoneInput }
-                    checkEmail = { this.onEmailInput }
+                    name = { this.state.nameValidate }
+                    phone = { this.state.phoneValidate }
+                    mail = { this.state.mailValidate }
+                    success = { this.state.sendForm }
+                    nameInput = { this.onNameInput }
+                    phoneInput = { this.onNumberInput }
+                    mailInput = { this.onMailInput }
                     handleSubmit = { this.onSubmit }
-                    success = { this.state.success }
                 />
             </div>
         )

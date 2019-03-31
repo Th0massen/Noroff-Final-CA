@@ -11,6 +11,7 @@ class LoginPage extends React.Component{
             username: "",
             password: "",
             register: false,
+            showErr: false
         }
     }
 
@@ -36,7 +37,9 @@ class LoginPage extends React.Component{
         } 
         else{
             console.log('Wrong username or password')
-            // error message TBD ( To Be Developed )
+            this.setState({
+                showErr: true
+            })
         }
     }
 
@@ -74,6 +77,7 @@ class LoginPage extends React.Component{
                         onRegisterClick = { this.handleFormChange }
                         userInput = { this.handleUserInput }
                         passInput = { this.handlePassInput } 
+                        error = { this.state.showErr }
                     />
                 }
             </React.Fragment>

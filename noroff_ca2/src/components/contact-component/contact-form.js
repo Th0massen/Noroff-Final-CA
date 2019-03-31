@@ -3,56 +3,118 @@ import styles from './contact-component.module.scss'
 
 const ContactForm = ( props ) => {
 
-    let nameError = null;
-    let phoneError = null;
-    let mailError = null;
-    let success = ''
+    let nameError = '';
+    let phoneError = '';
+    let mailError = '';
+    let sendForm;
 
-    if( props.nameError === false ){
-        nameError = (
-            <React.Fragment>
-                <p>Enter a Name!</p>
-            </React.Fragment>
-        )
-    } else{
-        nameError = null;
+    const validated = {
+        width: '60%',
+        margin: '0 auto',
+        padding: '1px 17px',
+        backgroundColor: 'green',
+        opacity: 0.5
     }
-    if( !props.numbError ){
-        phoneError = (
-            <React.Fragment>
-                <p>Invalid Number!</p>
-            </React.Fragment>
-        )
-    } else {
-        phoneError = null;
+
+    const errorBorder = {
+        width: '60%',
+        margin: '0 auto',
+        padding: '5px 15px',
+        border: '1px solid red'
     }
-    if( !props.mailError ){
-        mailError = (
-            <React.Fragment>
-                <p>Invalid Email</p>
-            </React.Fragment>
-        )
-    } else {
-        mailError = null;
+
+    const formSuccess = {
+        position: 'absolute',
+        top: 350,
+        right: 0,
+        left: 0,
+        backgroundColor: 'green',
+        color: 'white',
+        opacity: 0.9,
+        
+    }
+
+    switch( props.name ){
+        case true:
+            nameError = <div style={ validated }></div>
+            break
+        case null: 
+            nameError = null
+            break
+        default:
+            nameError = (
+                <div style={errorBorder}>
+                    <p>Your name is required!</p>
+                </div>
+            )
+            break
+    }
+
+    switch( props.phone ){
+        case true:
+            phoneError = <div style={ validated }></div>
+            break
+        case null:
+            phoneError = null
+            break
+        default:
+            phoneError = (
+                <div style={ errorBorder }>
+                    <p>Invalid number!</p>
+                    <p>Please try again using one of the ways listed below</p>
+                    <p>xxx.xxx.xxxx</p>
+                    <p>xxx-xxx-xxxx</p>
+                    <p>xxx xxx xxxx</p>
+                </div>
+            )
+            break
+    }
+
+    switch( props.mail ){
+        case true:
+            mailError = <div style={ validated }></div>
+            break
+        case null:
+            mailError = null
+            break
+        default:
+            mailError = (
+                <div style={ errorBorder }>
+                    <p>Invalid E-mail</p>
+                </div>
+            )
+            break
     }
 
     if( props.success ){
-            success = 'Success'
+        sendForm = (
+            <div style={ formSuccess }>
+                <p>Success</p><hr />
+                <p>Thank you for leaving a ticket, <br /> We will be in touch.</p>
+            </div>
+        )
     }
 
     return(
         <form className={ styles.form }>
-            <h1 className={ styles.form_title }>Contact us</h1>
-            <input className={ styles.form_input } type="text" placeholder="Full Name" onChange={ props.checkName } required /><br/>
+            <h1 className={ styles.form_title }>Leave a ticket, we will contact you</h1>
+            <input className={ styles.form_input } type="text" placeholder="Full Name" 
+                onBlur={ props.nameInput } required 
+            />
             { nameError }
-            <input className={ styles.form_input } type="text" placeholder="Phone Number" onChange={ props.checkPhone } required/><br/>
+            <br/>
+            <input className={ styles.form_input } type="text" placeholder="Phone Number" 
+                onBlur={ props.phoneInput } required
+            />
             { phoneError }
-            <input className={ styles.form_input } type="email" placeholder="Email Address" onChange={ props.checkEmail } required/><br/>
+            <br/>
+            <input className={ styles.form_input } type="email" placeholder="Email Address" 
+                onBlur={ props.mailInput } required
+            />
             { mailError }
-            <input className={ styles.form_button } type="button" value='Submit' onClick={ props.handleSubmit }/>
-            <div>
-                <p>{ success }</p>
-            </div>
+            <br/>
+            <input className={ styles.form_button } type="button" value='Demand a conversation' onClick={ props.handleSubmit }/>
+            { sendForm }
         </form>
     )
 }
